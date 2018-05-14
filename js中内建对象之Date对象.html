@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中内建对象之Date对象</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var d = new Date();
+		console.log(d);
+		var d = new Date(138578457845);
+		console.log(d);
+		var d = new Date(2015,09,23);
+		console.log(d);
+		var d = new Date(09,23);
+		console.log(d);
+		console.log(Date.now());
+		console.log(new Date(424132132134));
+		console.log(Date.parse('Sat Jun 11 1983 06:28:52 GMT'));
+		console.log(Date.parse('Aug 9.2015'));
+		console.log(Date.UTC(2015,08,01));
+		var d = new Date("2015-09-26 12:12:12");
+		console.log(d.getDate());
+		console.log(d.getDay());
+		console.log(d.getFullYear());
+		console.log(d.getMonth());
+		console.log(d.getHours());
+		console.log(d.getMinutes());
+		console.log(d.getSeconds());
+		console.log(d.getMilliseconds());
+		console.log(d.getTime());
+		console.log(d.toString());
+		console.log(d.valueOf());
+		console.log(d.toJSON());
+	</script>
+</body>
+</html>

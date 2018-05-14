@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的扩展内建对象</title>
+</head>
+<body>
+	<script type="text/javascript">
+		String.prototype.reverse = function(){
+			return Array.prototype.reverse.apply(this.split('')).join('');
+		}
+		console.log('test'.reverse());
+		console.log('lbh'.reverse());
+		//检测方式是否存在，不存在则扩展
+		if(!Array.prototype.inArray){
+			Array.prototype.inArray = function(needle){
+				for(var i=0,len=this.length;i<len;i++){
+					if(this[i]==needle){
+						return true;
+					}
+				}
+				return false;
+			}
+		};
+		var arr = ['a','b','c','d'];
+		console.log(arr.inArray('b'));
+		console.log(arr.inArray('w'));
+
+		function Person(){
+			this.mouth = true;
+		}
+		var p1 = new Person();
+		var p2 = new Person();
+		Person.prototype.say = function(){
+			return 'hello';
+		}
+		console.log(p1.say());
+		console.log(p2.say());
+		console.log(p1.constructor);
+		console.log(p1.constructor.prototype.constructor);
+		console.log(p1.constructor.prototype.mouth);
+		Person.prototype = {
+			hair:true,
+			face:true
+		};
+		console.log(p1.hair);
+		console.log(p1.say());
+		console.log(typeof p1.__proto__.say);
+		console.log(typeof p1.__proto__.hair);
+
+		var p3 = new Person();
+		console.log(typeof p3.__proto__.say);
+		console.log(typeof p3.__proto__.hair);
+		console.log(typeof p3.__proto__.face);
+		console.log(p3.constructor);
+		//重置constructor属性
+		Person.prototype.constructor = Person;
+	</script>
+</body>
+</html>

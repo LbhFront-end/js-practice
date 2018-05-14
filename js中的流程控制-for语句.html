@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的流程控制-for语句</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+	/*
+	for(exp1;exp2;exp3){
+		循环体;
+	}
+	exp1:无条件执行第一个表达式
+	exp2:是判断是否能执行循环体的条件
+	exp3:做增量的操作
+	*/
+	for(var i = 1;i<=10;i++){
+		document.write('1<br/>');
+	}
+	document.write(i);
+	document.write('<hr color = "#ff9"/>');
+
+	//循环输出0~100
+	for(var i=0;i<=100;i++){
+		document.write(i);
+		document.write('<br/>')
+	}
+	document.write('<hr color = "#ff9"/>');
+	//循环输出100~0
+	for(var i=100;i>=0;i--){
+		document.write(i);
+		document.write('<br/>')
+	}
+	document.write('<hr color = "#ff9"/>');
+	//1~100奇数
+	for(var i=1;i<=100;i+=2){
+		document.write(i);
+		document.write('<br/>')
+	}
+	document.write('<hr color = "#ff9"/>');
+	//1~100奇数
+	for(var i=1;i<=100;++i){
+		if(i%2 == 1){
+			document.write(i+'<br/>')
+		}
+		
+	}
+	document.write('<hr color = "#ff9"/>');
+	//1~100偶数
+	for(var i=0;i<=100;i+=2){
+		document.write(i);
+		document.write('<br/>')
+	}
+	document.write('<hr color = "#ff9"/>');
+	//1~100偶数
+	var sum1 = 0;
+	for(var i=0;i<=100;++i){
+		if(i%2 == 0){
+			sum1+=i;
+		}
+		
+	}
+	document.write(sum1);
+	document.write('<hr color = "#ff9"/>');
+	//1~100数字和
+	document.write('<hr color = "#ff9"/>');
+	var sum = 0;
+	for(var i = 1;i<=100;i++){
+		sum+=i;
+	}
+	document.write(sum);
+	//break可以结束for循环
+	for (var i = 1; i >= 0; ++i) {
+		if(i>100){
+			break;
+		}
+		document.write(i+'<br/>');
+	}
+	document.write('<hr color="#ff9">');
+	//continue:跳出当前循环，进入下次循环
+	for (var i = 1; i < 10; i++) {
+		if(i == 3){
+			// break;
+			continue;
+		}
+		document.write(i+'<br/>');
+	}
+	document.write('<hr color="#f9f">');
+	//嵌套for-table
+	for(var i = 1;i<=3;i++){
+		document.write('外层循环循环第'+i+'次的结果<br/>');
+		for (var j = 1;j<=2; j++) {
+			document.write('内存循环循环第'+j+'次的结果<br/>');
+		}
+		document.write('<hr color = "#f9f"/>')
+	}
+	document.write('<table border="1" cellpadding="0" bgcolor="aqua" width="80%">');
+	for (i=0; i <= 9; i++) {
+		document.write('<tr>');
+		for (var j = 0; j <= i; j++) {
+			document.write('<td>' +i+ 'x' +j+ '='+ i*j +'</td>');
+		}
+		document.write('</tr>');
+	}
+	document.write('</table>');
+	document.write('<table border="1" cellpadding="0" bgcolor="#ff9" width="80%">');
+	for (i=9; i >= 0; i--) {
+		document.write('<tr>');
+		for (var j = 9; j >= i; j--) {
+			document.write('<td>' +i+ 'x' +j+ '='+ i*j +'</td>');
+		}
+		document.write('</tr>');
+	}
+	document.write('</table>');
+	//百钱买白鸡,公鸡5元每只，母鸡3元每只，小鸡1元3只，100元买一百只鸡
+	for(var x=0;x<=20;x++){
+		for(var y=0;y<33;y++){
+			for (var z=0;z<=100;z++) {
+				if ((x+y+z == 100)&&(5*x+3*y+z/3) == 100){
+						document.write('公鸡:'+x+','+'母鸡:'+y+','+'小鸡:'+z+'<hr/>');
+				}
+			}
+		}
+
+	}
+	/*
+	while(){
+		循环体;
+	}
+	do{
+		循环体;
+	}
+	while(exp);
+	*/
+	var i = 1;
+	while(i<=10){
+		document.write(i);
+		document.write('<br/>');
+		i++;
+	}
+	document.write(i);
+	document.write('<hr/>'); 
+	while (false) {
+		document.write('false');
+	}
+
+	do{
+		document.write('do while')
+	}
+	while (false) {
+		document.write('<hr/>');
+	}
+	//break:可以结束while和do...while
+</script>
+</body>
+</html>

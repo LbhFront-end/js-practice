@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slice/splice/split区别</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// slice
+		var a = [1,2,3,4,5,6];
+		var b = a.slice(0,3); //[1,2,3]
+		var c = a.slice(3);  //[4,5,6]
+		var d = a.slice(-2); //[5,6]
+		var e = a.slice(-7); //[1,2,3,4,5,6]
+		var f = a.slice(9); //[]
+		var str = 'hi slice'
+		var e = str.slice(2); // slice
+
+		//splice
+		var a = ['a','b','c','d'];
+		var b = a.splice(1,1,'r','t'); // a = ['a','r','t','c','d'] b = ['b']
+		
+
+		//split
+		var a = '2736762687';
+		var b = a.split(''); //b =["2", "7", "3", "6", "7", "6", "2", "6", "8", "7"] a = '2736762687';
+	</script>
+</body>
+</html>

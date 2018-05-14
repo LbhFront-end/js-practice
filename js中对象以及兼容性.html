@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中对象以及兼容性</title>
+</head>
+<body>
+	<input type="button" value="test" id="btn"><br>
+	<a href="http://www.baidu.com" id="myWeb">点我</a>
+	<div id="box1"><input type="button" id="btn1" value="test1"></div>
+	<script type="text/javascript">
+		// var btn1 = document.getElementById('btn1');
+		// // btn1.onclick = function(e){
+		// // 	alert(e.type);
+		// // };
+		// btn1.addEventListener('click',function(e){
+		// 	// alert(e.type);
+		// 	// alert(this.tagName);
+		// 	// alert(e.currentTarget);
+		// 	// alert(this === e.currentTarget);
+		// 	alert(e.target);
+		// },false);
+
+		// document.body.onclick = function(e){
+		// 	alert(e.currentTarget);
+		// 	alert(e.currentTarget ===this);
+		// 	alert(e.target === document.getElementById('btn1'));
+		// 	alert(document.body === this);
+		// }
+
+		// var btn1 = document.getElementById('btn1');
+		// var handler = function(e){
+		// 	switch(e.type){
+		// 		case 'click':
+		// 			alert('clicked!');
+		// 			break;
+		// 		case 'mouseover':
+		// 			e.target.style.backgroundColor = 'red';
+		// 			break;
+		// 		case 'mouseout':
+		// 			e.target.style.backgroundColor = '';
+		// 			break;
+		// 	}
+		// };
+		// btn1.onclick = handler;
+		// btn1.onmouseover = handler;
+		// btn1.onmouseout = handler;
+		// var myWeb = document.getElementById('myWeb');
+		// myWeb.addEventListener('click',function(e){
+		// 	alert(e.cancelable);
+		// 	e.preventDefault();//取消默认
+		// },false);
+
+
+		//eventPhase属性，捕获阶段调用的事件处理程序，eventPhase=1
+		//事件处理程序处于目标对象上，eventPhase=2
+		//事件冒泡阶段调用事件处理程序，eventPhase=3
+		// var btn1 = document.getElementById('btn1');
+		// btn1.onclick = function(e){
+		// 	alert(e.eventPhase);//检测事件处于事件流的位置，在事件目标为2，冒泡处理程序是3,捕获阶段是1
+		// };
+		// document.body.addEventListener('click',function(e){
+		// 	alert(e.eventPhase);
+		// },true);
+		// document.body.onclick = function(e){
+		// 	alert(e.eventPhase);
+		// }
+
+		// ie兼容
+		var btn = document.getElementById('btn');
+		btn.onclick = function(){
+			alert(window.event.srcElement === this);
+		};
+		// btn.attachEvent('onclick',function(e){
+		// 	alert(e.srcElement === this);
+
+		// });
+		var myWeb = document.getElementById('myWeb');
+		myWeb.onclick = function(){
+			window.event.returnValue = false;//取消默认事件
+		};
+
+		var box1 = document.getElementById('box1');
+		var btn1 = document.getElementById('btn1');
+		box1.onclick = function(){
+			alert('box1 clicked');
+		}
+		btn1.onclick = function(){
+			alert('btn1 clicked');
+			window.event.cancelBubble = true;//取消事件冒泡
+		}
+		document.body.onclick = function(){
+			alert('body clicked');
+		}
+	</script>
+</body>
+</html>

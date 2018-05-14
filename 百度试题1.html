@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js百度试题1</title>
+	<!-- 用原生javascript编写程序：创建一个ul无序列表元素添加到body中，ul下包含5个li元素，每个li元素包含一个text类型元素，text元素内容可自定义。 -->
+</head>
+<body>
+	<script>
+		window.onload = function(){
+			var bodyNode = document.getElementsByTagName('body');
+			var ulNode = document.createElement('ul');
+			console.log(bodyNode);
+			console.log(bodyNode[0]);
+			bodyNode[0].appendChild(ulNode);
+			for(var i=0;i<5;i++){
+				var liNode = document.createElement('li');
+				var textNode = document.createTextNode('li'+i);
+				liNode.appendChild(textNode);
+				ulNode.appendChild(liNode);
+			}
+		};
+
+	</script>
+</body>
+</html>

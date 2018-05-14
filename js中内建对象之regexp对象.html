@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中内建对象之regexp对象</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// var patt = new RegExp("javascript");
+		// var res = patt.test('this is javascript test');
+		// console.log(res);
+		// patt = /javascript/;
+		// patt = /dfv/i;//i代表忽略大小写
+		// res = patt.test('this is javascript show time');
+		// console.log(res);
+		res = /[abc]/.test('lue');//[]包括
+		res = /[^abc]/.test('lue');//[^]除了
+		res = /[0-9]/.test('lue');//[0-9]检测数字
+		res = /[a-z]/.test('Da');//[a-z]检测小写字母
+		//元字符
+		res = /./.test('\n');//.代表除换行符号的任意字符
+		res = /./.test('dhasjdhkas das ');
+		res = /\w/.test('dsadsa ');//[a-zA-Z0-9]
+		res = /\W/.test('dsadsa ');//[^a-zA-Z0-9]代表除[a-zA-Z0-9]的任意字符
+		res = /\s/.test('dsadsa ');//查找空白字符
+		res = /\S/.test('  ');//查找非空白字符
+		res = /\bg/.test('good');//查找字母是否为单词的边界
+		res = /d\b/.test('good');//查找字母是否为单词的边界
+		res = /o\B/.test('good');//查找字母为单词的非边界
+
+		//量词
+		res = /o+/.test('good');//+至少出现一次o
+		res = /o*/.test('good');//*出现0次 一次 或者多次
+		res = /o?/.test('good');//*出现0次 或者一次 
+		res = /o{2}/.test('goood');//{n}至少出现n次 
+		res = /o{2,3}/.test('god');//{n,m}n次以上 
+		res = /^s/.test('sdss');//s开头 
+		res = /s$/.test('dss');//s结尾 
+		res = /o(?=w)/.test('dossw');//o之后紧跟w 
+		res = /o(?!=w)/.test('dossw');//o不紧跟w 
+		res = /\d/.test('dossw');//[0-9]
+		res = /\D/.test('dossw');//[^0-9]
+		// console.log(res);
+
+
+		// res = /is/.exec('this is a test');
+		// console.log(res);
+		// console.log(res[0]);
+		// var str = 'this is test2';
+		// var patt = /i/ig;
+		// var myArr;
+		// while((myArr=patt.exec(str))!== null){
+		// 	var msg = '找到了'+myArr[0]+ '!';
+		// 	msg += '下一个匹配从'+patt.lastIndex;
+		// 	console.log(msg);
+		// }
+
+		// var str = 'this is a test';
+		// res = str.match(/IS/i);
+		// console.log(res);
+		// res = str.match(/IS/ig);
+		// console.log(res);
+		// res = str.search(/IS/ig);
+		// console.log(res);
+		// var str1 = str.replace(/is/ig,'!');
+		// console.log(str1);
+
+		// var str = '2017-10-21';
+		// res = str.replace(/(\d{4})-(\d{2})-(\d{2})/,'$2/$3/$1');
+		// console.log(res);
+
+		str = 'hdsHsaddDDD';
+		res = str.replace(/[A-Z]/g,func);
+		function func(match){
+			return match.toLowerCase();
+		}
+		console.log(res);
+		res = str.split(/\s+/);
+			console.log(res);
+	</script>
+</body>
+</html>

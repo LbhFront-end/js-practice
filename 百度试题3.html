@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js百度试题3</title>
+	<!-- 编写一个方法 求一个字符串的字节长度 -->
+</head>
+<body>
+	<script>
+		function getBytes(str){
+			var len = str.length;
+			var bytes = len;
+			for(var i=0;i<len;i++){
+				if(str.charCodeAt(i)>255){
+					bytes++;
+				}
+			}
+			return bytes;
+		}
+		console.log(getBytes('你好，yse'));
+	</script>
+</body>
+</html>

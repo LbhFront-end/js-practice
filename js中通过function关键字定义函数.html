@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中通过function关键字定义函数</title>
+</head>
+<body>
+	<script>
+		/*
+		函数名称严格区分大小写
+		函数名称重复会产生覆盖
+		函数名称不要包含特殊符号
+		函数名称最好含义明确
+		函数名称最好用驼峰下标法或者下划线法
+		函数名称重复会产生覆盖
+		函数可以有参数也可以没有参数，可以有一个参数也可以有多个参数
+		函数通过return加返回值，如果没有return默认返回undefined
+		函数不调用不执行
+		*/
+		/* function test(){
+		 	alert('this is a test');
+		 }
+		 test();
+		 */
+
+		 // function test1(){
+		 // 	return 1;
+		 // }
+		 // alert(test1());
+
+		 function calc(num1,num2){
+		 	return num1+num2;
+		 }
+		 // alert(calc(1,2));
+		 // alert(window.calc(4,8);)
+
+		 function calc1(num1,num2){
+		 	num1 = num1 || 1;
+		 	num2 = num2 || 2;
+		 	return num1 + num2;
+		 }
+		 alert(calc1(3,7));
+		</script>
+	</body>
+	</html>

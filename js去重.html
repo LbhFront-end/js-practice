@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js去重</title>
+</head>
+<body>
+	<script>
+	// 思路1
+	// 双层循环for，相同则跳过
+	// Array.prototype.distinct = function(){
+	// 	var array = this;
+	// 	var res = [];
+	// 	for(var i=0;i<this.length;i++){
+	// 		for(var j=i+1;j<this.length;j++){
+	// 			if(array[i] == array[j]){
+	// 				j = ++i;
+	// 			}
+	// 		}
+	// 		res.push(array[i]);
+	// 	}
+	// 	return res;
+	// }
+
+	//思路2
+	// 利用splice直接在原数组进行操作
+	// 双层循环，外层循环元素，内层循环时比较值，值相同时，则删去这个值
+	// 注意点:删除元素之后，需要将数组的长度也减1.
+		Array.prototype.distinct = function(){
+		var array = this;
+		var res = [];
+		var len = this.length;
+		for(var i=0;i<len;i++){
+			for(var j=i+1;j<len;j++){
+				if(array[i] == array[j]){
+					array.splice(j,1);
+					j--;
+					len--;
+				}
+			}
+			res.push(array[i]);
+		}
+		return res;
+	}
+	var arr = [2,4,554,2,8,'a','e','a','e','t',7,'b',1];
+	console.log(arr.distinct());
+</script>
+</body>
+</html>

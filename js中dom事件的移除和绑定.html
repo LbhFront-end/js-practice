@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中dom事件的移除和绑定</title>
+</head>
+<body>
+	<!-- <div id="box1" style="background: #ABCDEF;width: 300px;height: 300px;">
+		<input type="button" value="test1" id="btn1">
+	</div>
+	<script type="text/javascript">
+		var btn1 = document.getElementById('btn1');
+		var box1 = document.getElementById('box1');
+		//false 冒泡 true 捕获
+		btn1.addEventListener('click',function(e){
+			alert('button clicked');
+			var e = e||window.event;
+			if(typeof e.cancelBubble == 'undefined'){
+				e.stopPropagation();
+			}else{
+				e.cancelBubble = true;
+			}
+		},false);
+		box1.addEventListener('click',function(){
+			alert('div clicked');
+		},false);
+		document.body.addEventListener('click',function(){
+			alert('body clicked');
+		},false)
+		document.documentElement.addEventListener('click',function(){
+			alert('html clicked');
+		},false)
+		document.addEventListener('click',function(){
+			alert('document clicked');
+		},false)
+	</script>	 -->
+
+	<input type="button" value="test" id="btn1">
+	<input type="button" value="test1" id="btn2">
+<!-- 	<input type="button" value="test2" id="btn2">
+	<input type="button" value="test3" id="btn3"> -->
+<!-- 	<script type="text/javascript">
+		var btn1 = document.getElementById('btn1');
+		btn1.addEventListener('click',function(){
+			alert('a');
+		},false);
+		var handler = function(){
+			alert('b');
+		}
+		btn1.addEventListener('click',handler,false);
+		btn1.addEventListener('click',function(){
+			alert('c');
+		},false);
+
+		var btn2 = document.getElementById('btn2');
+		var count = 0;
+		var handler1 = function(){
+			alert(count++);
+			if(count==3){
+				alert('事件被取消了');
+				btn2.removeEventListener('click',handler1,false)
+			}
+		};
+		btn2.addEventListener('click',handler1,false);
+
+		var btn3 = document.getElementById('btn3');
+		btn3.addEventListener('click',function(){
+			alert('123');
+			btn3.removeEventListener('click',function(){
+				alert('123');
+			},false);
+		},false);
+	</script> -->
+	<script type="text/javascript">
+		// var btn1 = document.getElementById('btn1');
+		// //在ie8之前是相反的顺序。hello lbh2 ,hello lbh
+		// btn1.attachEvent('onclick',function(){
+		// 	alert('hello lbh');
+		// });
+		// var handler = function(){
+		// 	alert('hello lbh2');
+		// }
+		// btn1.attachEvent('onclick',handler);
+
+		//封装跨浏览器处理事件
+		var EventUtil = {
+			//检测绑定事件
+			addHanlder:function(element,type,handler){
+				if(element.addEventListener){
+					element.addEventListener(type,handler,false);
+				}else if(element.attachEvent){
+					element.attachEvent('on'+type,handler);
+				}else{
+					element['on'+type] = handler;
+				}
+			},
+			removeHanlder:function(element,type,handler){
+				if(element.removeEventListener){
+					element.removeEventListener(type,handler,false);
+				}else if(element.detachEvent){
+					element.detachEvent('on'+type,handler);
+				}else{
+					element['on'+type] = null;
+				}
+			}
+		}
+
+		var btn1 =document.getElementById('btn1');
+		var test = function(){
+			alert('hello lbh');
+		}
+		EventUtil.addHanlder(btn1,'click',test);
+
+		var btn2 =document.getElementById('btn2');
+		var test1 = function(){
+			EventUtil.removeHanlder(btn1,'click',test);
+		}
+		EventUtil.addHanlder(btn2,'click',test1);
+
+
+	</script>
+</body>
+</html>

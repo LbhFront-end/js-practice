@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的数据类型转换</title>
+</head>
+<body>
+	<h1>隐式转换的例子</h1>
+</body>
+<script type="text/javascript">
+	/*
+	if(exp){
+		exp为true的代码块;
+	}else{
+		exp为false的代码块;
+	}
+	*/
+	
+	//转换为Boolean类型假的:
+	var a;//undefined -> false
+	a = null;//null -> false
+	a = 0;//0 -> false
+	a = 0.0;//0.0 -> false
+	a = 0/0;//NaN -> false
+	a = '';//空字符串 -> false
+	// typeof得到变量的类型
+	/*
+	if(a){
+		alert('真');
+	}else{
+		alert('假');
+	}
+	*/
+
+	/*
+	其他类型转换为数值型
+	var b = undefined;//undefined ->NaN
+	b = null;//null -> 0
+	b = true;//true -> 1
+	b = false;//false -> 0
+	alert(1+b);
+
+	var c = '33';
+	alert(typeof c);
+	c = c * 1;
+	alert(typeof c);
+	*/
+</script>
+</html>

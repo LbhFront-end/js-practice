@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中只继承原型的方案</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		function Shape(){};
+		Shape.prototype.name = 'shape';
+		Shape.prototype.toString = function(){
+			return this.name;
+		}
+		function TwoDShape(){};
+		TwoDShape.prototype = Shape.prototype;
+		TwoDShape.prototype.constructor = TwoDShape;
+		TwoDShape.prototype.name = '2Dshape';
+
+		function Triangle(side,height){
+			this.side = side;
+			this.height = height;
+		}
+		Triangle.prototype = TwoDShape.prototype;
+		Triangle.prototype.constructor = Triangle;
+		Triangle.prototype.name = 'triangle';
+		Triangle.prototype.getArea=function(){
+			return this.side*this.height/2;
+		}
+		var my = new Triangle(5,10);
+		console.log(my.getArea());
+		console.log(my.toString());
+		var s = new Shape();
+		console.log(s.name);//还是triangle,而不是shape,父对象被子对象影响了
+		*/
+		//解决方法
+		function Shape(){};
+		Shape.prototype.name = 'shape';
+		Shape.prototype.toString = function(){
+			return this.name;
+		}
+
+		function TwoDShape(){};
+		//声明临时构造器
+		var F = function(){};
+		F.prototype = Shape.prototype;
+		TwoDShape.prototype = new F();
+
+		TwoDShape.prototype.constructor = TwoDShape;
+		TwoDShape.prototype.name = '2Dshape';
+
+		function Triangle(side,height){
+			this.side = side;
+			this.height = height;
+		}
+		var F = function(){};
+		F.prototype = TwoDShape.prototype;
+		Triangle.prototype = new F();
+		Triangle.prototype.constructor = Triangle;
+		Triangle.prototype.name = 'triangle';
+		Triangle.prototype.getArea=function(){
+			return this.side*this.height/2;
+		}
+		var my = new Triangle(5,10);
+		console.log(my.getArea());
+		console.log(my.toString());
+		var s = new Shape();
+		console.log(s.name);
+		console.log(my.__proto__.__proto__.__proto__.constructor);
+	</script>
+</body>
+</html>

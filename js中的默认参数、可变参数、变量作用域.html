@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的默认参数、可变参数、变量作用域</title>
+</head>
+<body>
+	<script>
+		//实现默认参数的形式
+		/*
+		function calc(x,y){
+			x = x || 0;
+			y = y || 0;
+			return x+y;
+		}
+		function calc1(x,y){
+			if(x === undefined){
+				x = 0;
+			}
+			y === undefined?0:y;
+			return x+y;
+		}
+		function calc3(x,y){
+			// return arguments;
+			alert(arguments[0]);
+			alert(arguments[1]);
+			x = arguments[0]?arguments[0]:0;
+			y = arguments[1]?arguments[1]:0;
+			return x+y;
+		}
+		// alert(calc());
+		// alert(calc(3,7));
+		// alert(calc1());
+		// alert(calc1(4,7));
+		// alert(calc3());
+		// alert(calc3(3,5));
+
+		// function test(){
+		// 	var paramsNum = arguments.length;//得到传入参数个数
+		// 	var sum = 0;
+		// 	alert(paramsNum) ;
+		// 	for (var i = 1;i<paramsNum;++i) {
+		// 		sum += arguments[i];
+		// 	}
+		// 	return sum;
+
+		// }
+		// alert(test(1,2,0.4,232,2));
+		/*
+		function test1(){
+			var paramsNum = arguments.length;
+			var max = 0;
+			for(var i = 1;i<=paramsNum-1;i++){
+				if(arguments[i]>max){
+					max = arguments[i];
+				}
+			}
+			return max;
+		}
+		alert(test1(1,2,0.4,232,2));
+		*/
+		/*
+		//变量作用域
+		var x = 1;
+		function test(){
+			document.write('函数体内的x的值为:'+x+'<br/>');
+			x = 19;
+			document.write('函数体内对的x的值重复赋值，x值为:'+x+'<br/>');
+		}
+		document.write('函数体外x的值为:'+x+'<br/>');
+		test();
+		document.write('x的值为:'+x+'<br/>');
+		document.write('<hr/>');
+		*/
+		//全局变量与局部变量的区别
+		// function test1(){
+		// 	var x = 1;
+		// 	alert(x);
+		// }
+		// test1();
+		// // alert(x);
+
+		// function test2(){
+		// 	y = 5;
+		// 	alert(y);
+		// }
+		// test2();
+		// alert(y);
+		var x = 1;y = 2;
+		function calc(x,y){
+			document.write('a的值:'+a+'<br/>');
+			document.write('函数体内x的值为:'+x+'<br/>');
+			document.write('函数体内y的值为:'+y+'<br/>');
+			var x = 0,y = 6;
+			z = x + y;
+			var a = 198;
+			document.write('a的值:'+a+'<br/>');
+			document.write('x的值:'+x+'<br/>');
+			return z;
+		}
+
+		alert(calc(x,y));
+		alert(x+'-'+y+'-'+z);
+	</script>
+</body>
+</html>

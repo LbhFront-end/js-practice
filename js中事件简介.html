@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中事件简介</title>
+</head>
+<body>
+	<div id="box1" style="background: #ABCDEF;width: 300px;height: 300px;">
+		<input type="button" id="btn1" value="test1">
+	</div>
+	<!-- <input type="button" value="test1" id="btn1">
+		<input type="button" value="test2" id="btn2"> -->
+	<!-- <input type="button" value="test1" onclick="alert('hello lbh')">
+	<input type="button" value="test2" onclick="test()">
+	<input type="button" value="test3" id="btn1">
+	<input type="button" value="test4" id="btn2">
+	<input type="button" value="test5" id="btn3">
+	<input type="button" value="test6" id="btn4"> -->
+	
+	<script type="text/javascript">
+		/*
+		function test(){
+			alert('this is a test');
+		}
+		var btn1 = document.getElementById('btn1');
+		btn1.onclick =function(){
+			alert('btn1 click');
+		}
+		function test1(){
+			alert('btn2 click');
+		}
+		var btn2 = document.getElementById('btn2');
+		btn2.onclick = test1;
+		var btn3 = document.getElementById('btn3');
+		var count = 0;
+		btn3.onclick= function() {
+			// alert(this.tagName)
+
+			alert(count++);
+			if(count==3){
+				btn3.onclick = null;
+			}
+		};
+
+		var btn4 = document.getElementById('btn4');
+		btn4.onclick = function(){
+			alert('a');
+		}
+		*/
+		/*事件对象event*/
+		// var btn1 = document.getElementById('btn1');
+		// btn1.onclick = function(e){
+		// 	var e = e || window.event;//跨浏览器兼容
+		// 	alert(e.type);
+		// }
+		/*事件对象addEventListener*/
+		var btn1 = document.getElementById('btn1');
+		var box1 = document.getElementById('box1');
+		btn1.onclick = function(){
+			alert('btn1 clicked');
+			//取消冒泡
+			var e = e||window.event;
+			// //w3c取消冒泡
+			// e.stopPropagation();
+			// //ie取消冒泡
+			// alert(e.cancelBubble);
+			if(typeof e.cancelBubble == 'undefined'){
+				e.stopPropagation();
+			}else{
+				e.cancelBubble = true;
+			}	
+		}
+		box1.onclick = function(){
+			alert('div clicked');
+		}
+		document.body.onclick = function(){
+			alert('body clicked');
+		}
+		document.documentElement.onclick = function(){
+			alert('html  clicked');
+		}
+		document.onclick = function(){
+			alert('document clicked');
+		} 
+		//button - div - body - html - document冒泡
+	</script>
+
+</body>
+</html>

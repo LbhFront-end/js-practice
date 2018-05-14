@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的全局函数</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var url = "http://www.phpfamily.org/test.php?search = this is a test&sum = 1+2";
+		var res = encodeURI(url);
+		document.write(res+'<br>');
+		var res1 = decodeURI(res);
+		document.write('<br>'+res1+'<br>');
+		document.write('<hr/>');
+
+		var url2 = "http://www.phpfamily.org/test.php?search = this is a test&sum = 1+2&!.()*~";
+		var res2 = encodeURIComponent(url2);
+		document.write(res2+'<br/>');
+		var res21 = decodeURIComponent(res2+'<br>');
+		document.write(res21+'<br>');
+		document.write('<hr/>');
+
+		var str = 'http://www.phpfamily.org/test.php?search = this is a test&sum = 1+2&!.()*~";'
+		var result = escape(str);
+		document.write(result+'<br/>');
+		var result1 = unescape(result);
+		document.write(result1+'<br/>');
+		document.write('<hr/>');
+
+		//尽量不使用eval函数
+		eval('var i = 12;');
+		alert(i);
+	</script>
+</body>
+</html>

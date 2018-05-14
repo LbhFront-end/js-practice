@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的对象-属性相关操作</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var person = {
+			username:'lbh',
+			age:12,
+			salary:1321421,
+			addr:'广州',
+			sex:'男'
+		};
+		//查询属性
+		console.log('用户名为:'+person.username+'\n'+'性别:'+person.sex);
+		console.log('用户名为:'+person['username']+'\n'+'性别:'+person['sex']);
+		//如果属性不确定的时候需要用[]
+		var key = 'username';
+		console.log(person.key);
+		console.log(person[key]);
+
+		function PersonIofo(name,age,sex){
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+		}
+		var person1 = new PersonIofo('lsd','4','女');
+		console.log(person1.name+person1['sex']);
+
+		//添加属性
+		var obj = {};//空对象
+		obj.username = 'sdw';
+		obj.age = 32;
+		obj.addr = '上海';
+		obj['test'] = 'this is a test';
+		console.log(obj['test']);
+		console.log(obj.age+'\n'+obj['addr']);
+
+		//修改指定属性
+		obj.username = 'queen';
+		obj['test'] = '我是新名字';
+		console.log(obj['test']);
+		console.log('修改之后的名字:'+obj.username);
+
+		//通过delete删除指定属性
+		delete obj.test;
+		console.log(obj['test']);
+
+		//通过for/in 遍历属性
+		var obj3 = {
+			x:1,
+			y:2,
+			test:'this is a for/in test',
+			edu:'防守打法',
+		};
+		for(var p in obj3){
+			console.log(p+'\n');
+		}
+
+		//在对象中有方法
+		var obj10 = {
+			username:'dsadas',
+			age:200,
+			addr:'揭阳',
+			sayHi:function(){
+				return 'say Hi'
+			},
+			info:function(){
+				return '用户名:'+this.username+'\n'+'年龄:'+this.age+'\n地址:'+this.addr;
+			}
+		};
+		console.log(obj10.sayHi());
+		console.log(obj10.info());
+		console.log(obj10.info);
+
+		function Person(username,age,sex,addr){
+			this.username = username;
+			this.age = age;
+			this.sex = sex;
+			this.addr = addr;
+			this.info = function(){
+				return this.username+this.addr;
+			}
+		}
+		var p1 = new Person('queen',35,'女','上海');
+		console.log(p1.info());
+		p1.test = 'this is a test';
+		console.log(p1.test);
+		p1.info1 = function(){
+			return 'this is a test23'
+		};
+		console.log(p1.info1());
+	</script>
+</body>
+</html>

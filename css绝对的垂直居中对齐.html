@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css" media="screen">
+*{
+	margin: 0;
+	padding: 0;
+}
+.box1{
+	width: 200px;
+	height: 200px;
+	background: green;
+	position: absolute;
+	left:0;
+	right: 0;
+	bottom:0;
+	top: 0;
+	margin: auto;
+}
+.box2{
+	width:200px;
+	height: 200px;
+	background:red;
+	position: absolute;
+	left:50%;
+	top:50%;
+	margin-left: -100px;
+	margin-top: -100px;
+}
+.box3{
+	width:200px;
+	height: 200px;
+	background:blue;
+	position: absolute;
+	left:50%; /*定位父级的50%*/
+	top:50%;
+	transform:translate(-50%,-50%);/*自己的50%*/
+}
+.box4{		
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.box4>div{
+	background:#ff9;
+	width: 200px;
+	height: 200px;
+}
+.box5{
+	background-color: #FF8C00;/*橘黄色*/
+	width: 300px;
+	height: 300px;
+	display: table;
+}
+.content{
+	background-color: #F00;/*红色*/
+	display: table-cell;
+	vertical-align: middle;/*使子元素垂直居中*/
+	text-align: center;/*使子元素水平居中*/
+}
+.inner{
+	background-color: #000;/*黑色*/
+	display: inline-block;
+	width: 20%;
+	height: 20%;
+}
+</style>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+	<div class="box4">
+		<div></div>
+	</div>
+	<div class="box5">
+		<div class="content">
+			<div class="inner">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	var bb = 1;
+	function aa(bb) {
+		bb = 2;
+		alert(bb);
+	};
+aa(bb); 
+alert(bb); 
+</script>

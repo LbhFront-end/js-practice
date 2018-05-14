@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的数据类型强制转换</title>
+</head>
+<body>
+	<h1>强制转换的例子</h1>
+</body>
+<script type="text/javascript">
+	// 其他类型转换为Boolean
+	var test = new Boolean(0);
+	test = Boolean(-0);
+	test = Boolean(NaN);
+	test = Boolean(undefined);
+	test = Boolean(0.0);
+	test = Boolean('');
+	test = Boolean('0');
+	// 其他类型转换为字符串
+	test = String(124);
+	test = String(12.4);
+	test = String(true);
+	test = String(false);
+	test = String(null);
+	test = String(undefined);
+	test = String(NaN);
+	test = String('dds fdsf sdf');
+	// 其他类型转换为数值型
+	test = Number(23);
+	test = Number(2.3);
+	test = Number(true);
+	test = Number(false);
+	test = Number(null);
+	test = Number(undefined);
+	test = Number(NaN);
+	test = Number('gfdg');
+	// parseInt()转换为整型
+	test = parseInt('123');// 123
+	test = parseInt('123',0);// 123
+	test = parseInt(123,2);// 1
+	test = parseInt(123,8);// 83
+	test = parseInt(123,16);// 291
+	test = parseInt('012344');// 12344
+	test = parseInt('22dsds');// 22
+	test = parseInt('0x12344');// 74564
+	test = parseInt('true');//NaN
+	test = parseInt('  4  5');//4
+	// parseFloat()转换为浮点型
+	test = parseFloat('123.34adssa');//123.34
+	test = parseFloat('123');//123
+	test = parseFloat('dsd');//NaN
+	test = parseFloat('2e3a');//2000
+	alert(test);
+</script>
+</html>

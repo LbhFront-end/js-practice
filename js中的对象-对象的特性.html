@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的对象-对象的特性</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// var person = {};
+		// Object.defineProperties(person,{
+		// 	'username':{
+		// 		value:'lbh',
+		// 		writable:true,
+		// 		enumerable:true,
+		// 		configurable:true
+		// 	},
+		// 	age:{
+		// 		value:12,
+		// 		writable:false
+		// 	}
+		// });
+		// console.log(person.username);
+		// console.log(person['age']);
+		// console.log(Object.getOwnPropertyDescriptor(person,'username'));
+		// console.log(Object.getOwnPropertyDescriptor(person,'age'));
+
+		/*
+		//检测一个对象是否是另外一个对象的原型（或者处于原型链中）
+		var obj = {x:1};
+		var obj1 = Object.create(obj);
+		console.log(obj.isPrototypeOf(obj1));
+		console.log(Object.prototype.isPrototypeOf(obj1));
+		*/
+
+		// var obj = {};
+		// console.log(obj.toString());
+		// var arr = new Array();
+		// console.log(arr.toString());
+		// console.log(Object.prototype.toString.call(arr));
+		// var d = new Date();
+		// console.log(d.toString());
+		// console.log(Object.prototype.toString.call(d));
+		function classof(obj){
+			if(obj===null){
+				return 'NULL';
+			}
+			if(obj===undefined){
+				return 'Undefined'
+			}
+			return Object.prototype.toString.call(obj).slice(8,-1);
+		}
+		var x= null;
+		x = undefined;
+		x = 13.24;
+		x = 123;
+		x = 'kd';
+		x = true;
+		x = [];
+		x = window;
+		x = function(){};
+		function(x){
+			x = new();
+		};
+		console.log(classof(x));
+	</script>
+</body>
+</html>

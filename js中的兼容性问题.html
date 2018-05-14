@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的兼容性问题</title>
+</head>
+<body>
+	<input type="button" id="btn" value="test">
+	<a href="http://www.baidu.com" id="myA" >fuck it</a>
+	<div id="box1"><input type="button" id="btn1" value="test1"></div>
+	<script type="text/javascript">
+		//兼容代码封装
+		var EventUtil = {
+			//检测绑定事件
+			addHanlder:function(element,type,handler){
+				if(element.addEventListener){
+					element.addEventListener(type,handler,false);
+				}else if(element.attachEvent){
+					element.attachEvent('on'+type,handler);
+				}else{
+					element['on'+type] = handler;
+				}
+			},
+			//移除绑定事件
+			removeHanler:function(element,type,handler){
+				if(element.removeEventListener){
+					element.removeEventListener(type,handler,false);
+				}else if(element.datachEvent){
+					element.datachEvent('on'+type,handler);
+				}else{
+					element['on'+type] = null;
+				}
+			},
+			//获得事件
+			getEvent:function(event){
+				return event?event:window.event;
+			},
+			//捕获目标
+			getTarget:function(event){
+				return event.target||event.srcElement;
+			},
+			//阻止默认事件
+			preventDefault:function(event){
+				if(event.preventDefault){
+					event.preventDefault();
+				}else{
+					event.returnValue = false;
+				}
+			},
+			//阻止冒泡事件
+			stopPropagation:function(event){
+				if(event.stopPropagation){
+					event.stopPropagation();
+				}else{
+					event.cancelBubble = true;
+				}
+			},
+		}
+
+		var btn = document.getElementById('btn');
+		EventUtil.addHanlder(btn,'click',function(e){
+			e = EventUtil.getEvent(e);
+			var target = EventUtil.getTarget(e);
+			alert(target.tagName);
+		});
+
+		var link = document.getElementById('myA');
+		link.onclick = function(e){
+			e = EventUtil.getEvent(e);
+			EventUtil.preventDefault(e);
+		};
+		
+
+		var box1 = document.getElementById('box1');
+		var btn1 = document.getElementById('btn1');
+		box1.onclick = function(e){
+			alert('div clicked!');
+		}
+		btn1.onclick = function(e){
+			alert('btn clicked!');
+			e = EventUtil.getEvent(e);
+			EventUtil.stopPropagation(e);
+		}
+		document.body.onclick = function(e){
+			alert('body clicked!');
+		}
+
+	</script>
+</body>
+</html>

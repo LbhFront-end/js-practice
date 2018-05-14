@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js百度试题2</title>
+	<!-- 判断一个字符串中出现次数最多的字符，统计这个次数 -->
+</head>
+<body>
+	<script>
+		function getStr(){
+			var str = 'hdkjashfjhashfwqueyqaadavahsadavs';
+			var obj = {};
+			var max = '0';
+			var name = '';
+			for(var i=0;i<str.length;i++){
+				var key = str[i];
+				if(!obj[key]){
+					obj[key] = 1;
+				}else{
+					obj[key] ++;
+				}
+			}
+			for(var j in obj){
+				if(obj[j]>max){
+					max = obj[j];
+					name = j;
+				}
+			}
+			return name+':'+max+'次';
+		}
+
+
+		console.log(getStr());
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的特殊形式的函数-匿名函数的应用</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		var test = function calc(a,b){
+			return a+b;
+		};
+		alert(typeof test);
+		alert(test(1,2));
+		*/
+		var test1 = function(x,y){
+			return x*y;
+		};
+		123;
+		'king';
+		var test2 = function(x,y){
+			return x*y;
+		};
+		// alert(test2(5,4));
+		/*
+		把函数赋给变量
+		var test3 = test2;
+		alert(test3(4,7));
+		*/
+		/*
+		//函数的回调
+		function calc(x,y){
+			return x()+y();
+		};
+		function test3(){
+			return 3;
+		};
+		function test4(){
+			return 5;
+		};
+		alert(calc(test3,test4));
+		alert(calc(function(){return 4;},function(){return 7;}));
+
+
+		*/
+
+		/*
+		function cheng2(a,b,c){
+			var i,arr=[];
+			for(i=0;i<3;i++){
+				arr[i] = arguments[i]*2;
+			}
+			return arr;
+		}
+		function jia1(a){
+			return a+1;
+		}
+		var arr1 = [];
+		arr1 = cheng2(10,20,30);
+		// alert(arr1);
+		for(var i=0;i<3;i++){
+			arr1[i] = jia1(arr1[i]);
+		}
+		alert(arr1);
+		*/
+		// function addOne(a){
+		// 	return a+1;
+		// }
+		// function test6(a,b,c,callback){
+		// 	var i,arr=[];
+		// 	for(i=0;i<3;i++){
+		// 		arr[i] = callback(arguments[i]*2);
+		// 	}
+		// 	return arr;
+		// }
+		// alert(test6(4,6,5,addOne));
+		//匿名函数回调
+		// alert(test6(4,8,5,function(a){return a+6}));
+
+		// function t1(a,b){
+		// 	return a*b;
+		// }
+		// // alert(t1.call(t1,6,9));
+		// var params = [3,4];
+		// alert(t1.apply(t1,params));
+
+		//自调用函数
+		(function(){
+			alert('1');
+		})
+		();
+
+		(function(a,b){alert(a+b);})(3,5);
+		
+	</script>
+</body>
+</html>	
